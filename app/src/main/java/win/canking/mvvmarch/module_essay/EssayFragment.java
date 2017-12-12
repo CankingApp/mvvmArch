@@ -71,7 +71,6 @@ public class EssayFragment extends Fragment {
         });
 
 
-
         refreshLayout.setProgressViewOffset(false, 0, (int) TypedValue
                 .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 28, getResources()
                         .getDisplayMetrics()));
@@ -83,7 +82,7 @@ public class EssayFragment extends Fragment {
                     public void run() {
                         viewModel.updateCache();
                     }
-                },2000);
+                }, 2000);
             }
         });
         refreshLayout.setProgressBackgroundColorSchemeResource(android.R.color.white);
@@ -98,8 +97,8 @@ public class EssayFragment extends Fragment {
         viewModel.getEssayData().observe(this, new Observer<Resource<ZhihuItemEntity>>() {
             @Override
             public void onChanged(@Nullable Resource<ZhihuItemEntity> essayDayEntityResource) {
-                if (essayDayEntityResource != null) {
-                    if (essayDayEntityResource.status == Resource.Status.SUCCEED && essayDayEntityResource.data != null) {
+                if (essayDayEntityResource != null && essayDayEntityResource.data != null) {
+                    if (essayDayEntityResource.status == Resource.Status.SUCCEED) {
                         updateUI(essayDayEntityResource.data);
                         Toast.makeText(getActivity(), "succeed", Toast.LENGTH_SHORT).show();
                     } else {
