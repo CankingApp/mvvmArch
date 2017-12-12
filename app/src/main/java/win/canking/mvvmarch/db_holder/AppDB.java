@@ -24,7 +24,7 @@ import win.canking.mvvmarch.module_essay.db.entity.ZhihuItemEntity;
  */
 
 
-@Database(entities = {EssayDayEntity.class, ZhihuItemEntity.class}, version = 1)
+@Database(entities = {EssayDayEntity.class, ZhihuItemEntity.class}, version = 1, exportSchema = true)
 @TypeConverters(DateConverter.class)
 public abstract class AppDB extends RoomDatabase {
 
