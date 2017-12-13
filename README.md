@@ -19,6 +19,8 @@ tags: android
 * 接口分隔原则－Interface Segregation Principle (ISP) 
 * 单一职责原则－Single Responsibility Principle (SRP) 
 * 开闭原则－The Open-Closed Principle (OCP)
+* 迪米特法则－Law of Demeter (LOD)
+
 
 目前针对MVVM框架结构，[安卓官方](https://developer.android.google.cn/topic/libraries/architecture/adding-components.html)也给出了稳定的架构版本1.0。
 
