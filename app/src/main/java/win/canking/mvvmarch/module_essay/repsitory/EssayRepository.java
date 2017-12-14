@@ -40,7 +40,7 @@ public class EssayRepository extends AbsRepository {
         return null;
     }
 
-    public MediatorLiveData<Resource<ZhihuItemEntity>> update(){
+    public MediatorLiveData<Resource<ZhihuItemEntity>> update() {
         return loadEssayData();
     }
 
@@ -54,13 +54,15 @@ public class EssayRepository extends AbsRepository {
 
             @Override
             protected boolean shouldFetch(@Nullable ZhihuItemEntity data) {
+                //TODO：Realize your own logic
                 return true;
             }
 
             @NonNull
             @Override
             protected LiveData<ZhihuItemEntity> loadFromDb() {
-                return zhuhuDao.loadZhuhu();
+                LiveData<ZhihuItemEntity> entity = zhuhuDao.loadZhuhu();
+                return entity;
             }
 
             @NonNull
@@ -92,7 +94,7 @@ public class EssayRepository extends AbsRepository {
 
             @Override
             protected void onFetchFailed() {
-
+                //TODO: update the UI
             }
         }.getAsLiveData();
     }
