@@ -45,4 +45,16 @@ public class Resource<T> {
     public static <T> Resource<T> moreSucceed(@Nullable T data) {
         return new Resource<>(MORE_ADD, data, null);
     }
+
+    public static <T> Resource<T> success(@NonNull T data, String msg) {
+        return new Resource<>(SUCCEED, data, msg);
+    }
+
+    public static <T> Resource<T> loading(@Nullable T data, String msg) {
+        return new Resource<>(LOADING, data, msg);
+    }
+
+    public static <T> Resource<T> moreSucceed(@Nullable T data, String msg) {
+        return new Resource<>(MORE_ADD, data, msg);
+    }
 }

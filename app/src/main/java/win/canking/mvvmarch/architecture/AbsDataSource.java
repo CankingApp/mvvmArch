@@ -40,7 +40,7 @@ public abstract class AbsDataSource<ResultType, RequestType> {
     @MainThread
     public AbsDataSource() {
         final LiveData<ResultType> dbSource = loadFromDb();
-        result.setValue(Resource.loading(dbSource.getValue()));
+        result.setValue(Resource.loading(dbSource.getValue(),"db load"));
 
         result.addSource(dbSource, new Observer<ResultType>() {
             @Override
@@ -64,18 +64,10 @@ public abstract class AbsDataSource<ResultType, RequestType> {
     private void fetchFromNetwork(final LiveData<ResultType> dbSource) {
         final LiveData<IRequestApi<RequestType>> apiResponse = createCall();
 
-        result.addSource(dbSource, new Observer<ResultType>() {
-            @Override
-            public void onChanged(@Nullable ResultType resultType) {
-                result.setValue(Resource.loading(resultType));
-            }
-        });
-
         result.addSource(apiResponse, new Observer<IRequestApi<RequestType>>() {
             @Override
             public void onChanged(@Nullable final IRequestApi<RequestType> requestTypeRequestApi) {
                 result.removeSource(apiResponse);
-                result.removeSource(dbSource);
                 //noinspection ConstantConditions
                 if (requestTypeRequestApi.isSuccessful()) {
                     saveResultAndReInit(requestTypeRequestApi);

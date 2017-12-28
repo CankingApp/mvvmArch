@@ -102,7 +102,7 @@ public class EssayFragment extends Fragment {
                         updateUI(essayDayEntityResource.data);
                         Toast.makeText(getActivity(), "succeed", Toast.LENGTH_SHORT).show();
                     } else if (essayDayEntityResource.status == Resource.Status.LOADING) {
-                        Toast.makeText(getActivity(), "DB loaded", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "DB loaded " + essayDayEntityResource.message, Toast.LENGTH_SHORT).show();
                     } else if (essayDayEntityResource.status == Resource.Status.ERROR) {
                         Toast.makeText(getActivity(), "error", Toast.LENGTH_SHORT).show();
                     }
